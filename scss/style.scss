@@ -1,0 +1,1294 @@
+// Import
+@import "_reset";
+@import "_variables";
+@import "_mixins";
+@import "_fonts";
+
+
+
+
+
+
+
+
+
+
+// --------------------------------------------------------------------------------------------------------------
+// -Header-
+// --------------------------------------------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+.header {
+    min-height: 944px;
+    background-color: $bg-light;
+    overflow: hidden;
+
+
+    &__title {
+        font-family: HelveticaNeueLTPro-Lt;
+        font-size: 44px;
+        line-height: 58px;
+        letter-spacing: 0.88px;
+        color: $title-color;
+        text-align: center;
+        margin-top: 284px;
+    }
+
+    &__description{
+        font-family: Merriweather;
+        font-size: 16px;
+        font-weight: 300;
+        font-style: italic;
+        line-height: 1.06;
+        letter-spacing: 0.48px;
+        color: $description-color;
+        text-align: center;
+    }
+
+    &__button {
+        width: 188px;
+        height: 57px;
+        border: solid 1px $bg-dark;
+        background-color: $bg-light;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-top: 45px;
+        -webkit-transition-duration: 0.4s;
+        transition-duration: 0.4s;
+
+        &:hover {
+            border: solid 1px $bg-light;
+            background-color: $bg-dark;
+            color: $bg-light;
+        }
+
+        p {
+            margin-bottom: 3px;
+        }
+    }
+
+    &__dots {
+        width: 10px;
+        margin: auto;
+        margin-top: 276px;
+
+        &_item {
+            width: 10px;
+            height: 10px;          
+            margin-top: 12px;
+        }
+    }
+}
+
+
+.nav {
+    display: flex;
+    justify-content: center;
+
+
+    &__left {
+        display: flex;
+        padding: 0px;
+
+        &_item {
+            margin-right: 44px;
+            padding-top: 16px;
+
+            a {
+                font-family: Roboto;
+                font-size: 13px;
+                letter-spacing: 0.52px;
+                color: #989696;
+                text-decoration: none;
+                -webkit-transition-duration: 0.2s;
+                transition-duration: 0.2s;
+    
+                &:hover {
+                    color: black;
+                }
+            }
+        }
+    }
+
+    &__logo {
+        width: 55px;
+        height: 54px;
+        margin-right: 15px;
+        margin-left: 15px;
+    }
+
+    &__right {
+        display: flex;
+        padding: 0px;
+
+        &_item {
+            margin-left: 44px;
+            padding-top: 16px;
+
+            a {
+                font-family: Roboto;
+                font-size: 13px;
+                letter-spacing: 0.52px;
+                color: #989696;
+                text-decoration: none;
+                -webkit-transition-duration: 0.2s;
+                transition-duration: 0.2s;
+    
+                &:hover {
+                    color: black;
+                }
+            }
+        }
+    }
+}
+.active-page {
+    a {
+        color: black;
+    }
+}
+
+
+
+
+// Hamburger start
+#menuToggle
+{
+  display: block;
+  position: relative;
+  top: -40px;
+  
+  z-index: 1;
+  
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+#menuToggle a
+{
+  text-decoration: none;
+  font-family: Roboto;
+  color: #232323;
+  text-align: center;
+  
+  transition: color 0.3s ease;
+}
+
+#menuToggle a:hover
+{
+  color: tomato;
+}
+
+
+#menuToggle input
+{
+  display: block;
+  width: 55px;
+  height: 55px;
+  position: relative;
+  top: 40px;
+  margin: auto;
+  
+  cursor: pointer;
+  
+  opacity: 0; /* hide this */
+  z-index: 2; /* and place it over the hamburger */
+  
+  -webkit-touch-callout: none;
+}
+
+/*
+ * Just a quick hamburger
+ */
+.hamburger__logo {
+    width: 55px;
+    height: 55px;
+    position: relative;
+    z-index: 1;
+    top: -15px;
+    margin: auto;
+    background-color: $bg-dark;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    -webkit-transition-duration: 0.4s;
+    transition-duration: 0.4s;
+    cursor: pointer;
+
+    p {
+        color: white;
+        font-family: HelveticaNeueLTPro-Roman;
+        font-size: 40px;
+        margin-bottom: 0px;
+    }
+}
+
+#menuToggle input:checked ~ .hamburger__logo {
+    background-color: $bg-light;
+
+    p {
+        color: $bg-dark;
+        font-family: HelveticaNeueLTPro-Roman;
+        font-size: 40px;
+        margin-bottom: 0px;
+    }
+}
+
+#menuToggle span
+{
+  display: block;
+  width: 33px;
+  height: 4px;
+  margin-bottom: 5px;
+  position: relative;
+  
+  background: #cdcdcd;
+  border-radius: 3px;
+  
+  z-index: 1;
+  
+  transform-origin: 4px 0px;
+  
+  transition: transform 0.5s cubic-bezier(0.77,0.2,0.05,1.0),
+              background 0.5s cubic-bezier(0.77,0.2,0.05,1.0),
+              opacity 0.55s ease;
+}
+
+#menuToggle span:first-child
+{
+  transform-origin: 0% 0%;
+}
+
+#menuToggle span:nth-last-child(2)
+{
+  transform-origin: 0% 100%;
+}
+
+/* 
+ * Transform all the slices of hamburger
+ * into a crossmark.
+ */
+#menuToggle input:checked ~ span
+{
+  opacity: 1;
+  transform: rotate(45deg) translate(-2px, -1px);
+  background: #232323;
+}
+
+/*
+ * But let's hide the middle one.
+ */
+#menuToggle input:checked ~ span:nth-last-child(3)
+{
+  opacity: 0;
+  transform: rotate(0deg) scale(0.2, 0.2);
+}
+
+/*
+ * Ohyeah and the last one should go the other direction
+ */
+#menuToggle input:checked ~ span:nth-last-child(2)
+{
+  transform: rotate(-45deg) translate(0, -1px);
+}
+
+/*
+ * Make this absolute positioned
+ * at the top left of the screen
+ */
+#menu
+{
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  margin: -70px 0 0 0;
+  padding: 0px;
+  padding-top: 100px;
+  overflow: hidden; 
+  
+  background: #ededed;
+  list-style-type: none;
+  -webkit-font-smoothing: antialiased;
+  /* to stop flickering of text in safari */
+  
+  transform-origin: 0% 0%;
+  transform: translate(0, -100%);
+  
+  transition: transform 0.5s cubic-bezier(0.77,0.2,0.05,1.0);
+}
+
+#menu li
+{
+  padding: 10px 0;
+  font-size: 22px;
+  text-align: center;
+}
+
+/*
+ * And let's slide it in from the left
+ */
+#menuToggle input:checked ~ ul
+{
+  transform: none;
+}
+// Hamburger end
+
+
+
+
+
+
+//Breakpoints
+
+// xxl
+@media (min-width: 1401px) {
+
+}
+
+// xl
+@media (max-width: 1400px) {
+
+}
+
+// lg
+@media (max-width: 1200px) {
+
+}
+
+// md
+@media (max-width: 992px) {
+    #menu {
+        width: 101.5vw;
+    }
+
+    .header {
+        min-height: 944px;
+    
+    
+        &__title {
+            font-size: 44px;
+            line-height: 58px;
+            letter-spacing: 0.88px;
+            margin-top: 240px;
+        }
+    
+        &__button {
+            margin-top: 45px;
+        }
+    }
+}
+
+// sm
+@media (max-width: 768px) {
+    .header {
+        min-height: 900px;
+    
+    
+        &__title {
+            font-size: 40px;
+            line-height: 50px;
+            letter-spacing: 0.8px;
+            margin-top: 200px;
+        }
+    
+        &__description{
+            line-height: 20px;
+        }
+    
+        &__button {
+            margin-top: 45px;
+        }
+
+        &__dots {
+            margin-top: 240px;
+    
+            &_item {
+                width: 10px;
+                height: 10px;          
+                margin-top: 12px;
+            }
+        }
+    }
+}
+
+// none
+@media (max-width: 576px) {
+    .header {
+        min-height: 860px;
+    
+    
+        &__title {
+            font-size: 37px;
+            line-height: 30px;
+            letter-spacing: 0.8px;
+            margin-top: 180px;
+        }
+    
+        &__description{
+            margin-top: 14px;
+        }
+    
+        &__button {
+            margin-top: 45px;
+        }
+
+        &__dots {
+            margin-top: 220px;
+    
+            &_item {
+                width: 10px;
+                height: 10px;          
+                margin-top: 12px;
+            }
+        }
+    }
+}
+
+@media (max-width: 380px) {
+
+}
+
+
+
+
+
+
+
+
+
+
+// --------------------------------------------------------------------------------------------------------------
+// -Date-
+// --------------------------------------------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+.date {
+    min-height: 1332px;
+    background-color: $bg-dark;
+    overflow: hidden;
+
+    
+    &__item2011 {
+        margin-right: -18px;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+
+        &_title {
+            font-family: HelveticaNeueLTPro-Roman;
+            font-size: 48px;
+            letter-spacing: 0.96px;
+            color: #fefefe;
+            margin-top: 131px;
+            @include size(99px, 35px);
+        }
+        &_text {
+            font-family: Montserrat;
+            font-size: 15px;
+            font-weight: 300;
+            line-height: 1.4;
+            letter-spacing: 0.3px;
+            color: $text-color;
+            margin-top: 7px;
+            margin-right: -6px;
+            text-align: end;
+            @include size(400px, 37px);
+        }
+    }
+
+    &__item2012 {
+        margin-left: -34px;
+        margin-top: 252px;
+
+        &_title {
+            font-family: HelveticaNeueLTPro-Roman;
+            font-size: 48px;
+            letter-spacing: 0.96px;
+            text-align: left;
+            color: #fefefe;
+        }
+        &_text {
+            font-family: Montserrat;
+            font-size: 15px;
+            font-weight: 300;
+            line-height: 1.4;
+            letter-spacing: 0.3px;
+            text-align: left;
+            color: $text-color;
+            margin-top: 7px;
+            @include size(395px, 59px);
+        }
+    }
+
+    &__item2013 {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+        margin-top: 233px;
+
+        &_title {
+            font-family: HelveticaNeueLTPro-Roman;
+            font-size: 48px;
+            letter-spacing: 0.96px;
+            color: #fefefe;
+            margin-right: -15px;
+            @include size(99px, 35px);
+        }
+        &_text {
+            font-family: Montserrat;
+            font-size: 15px;
+            font-weight: 300;
+            line-height: 1.4;
+            letter-spacing: 0.3px;
+            text-align: right;
+            color: $text-color;
+            margin-top: 5px;
+            margin-right: -24px;
+            @include size(393px, 81px);
+        }
+    }
+
+    &__item2014 {
+        margin-left: -34px;
+        margin-top: 332px;
+
+        &_title {
+            font-family: HelveticaNeueLTPro-Roman;
+            font-size: 48px;
+            letter-spacing: 0.96px;
+            text-align: left;
+            color: #fefefe;
+        }
+        &_text {
+            font-family: Montserrat;
+            font-size: 15px;
+            font-weight: 300;
+            line-height: 1.4;
+            letter-spacing: 0.3px;
+            text-align: left;
+            color: $text-color;
+            margin-top: 7px;
+            @include size(393px, 59px);
+        }
+    }
+
+
+
+    &__line {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        &_circle2011 {
+            margin-top: -1181px;
+        }
+        &_circle2012 {
+            margin-top: 97px;
+        }
+        &_circle2014 {
+            margin-top: 209px;
+        }
+        &_circle2013 {
+            margin-top: 195px;
+        }
+    }
+
+
+
+    &__city {
+        margin-left: 3px;
+        margin-top: 210px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        &_white {
+            margin-top: -207px;
+        }
+    }
+
+
+    &__items{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        min-height: 900px;
+
+        &_item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+
+            &_title {
+                font-family: HelveticaNeueLTPro-Roman;
+                font-size: 48px;
+                line-height: 0.54;
+                letter-spacing: 0.96px;
+                color: #fefefe;
+                text-align: center;
+            }
+            &_text {
+                font-family: Montserrat;
+                font-size: 15px;
+                font-weight: 300;
+                line-height: 1.47;
+                letter-spacing: 0.3px;
+                text-align: left;
+                color: #b7b7b7;
+                text-align: center;
+                margin-top: 30px;
+            }
+        }
+    }
+}
+
+
+
+//Breakpoints
+
+// xxl
+@media (min-width: 1401px) {
+
+}
+
+// xl
+@media (max-width: 1400px) {
+
+}
+
+// lg
+@media (max-width: 1200px) {
+
+}
+
+// md
+@media (max-width: 992px) {
+    .date {
+        &__item2013 {
+            margin-top: 218px;
+        }
+        &__item2014 {
+            margin-top: 306px;
+        }
+    }
+    
+}
+
+// sm
+@media (max-width: 768px) {
+    .date {
+        min-height: 900px;
+    }
+}
+
+// none
+@media (max-width: 576px) {
+    .date__items_item_text{
+        max-width: 360px;
+    }
+}
+
+@media (max-width: 380px) {
+    .date__items_item_text{
+        max-width: 100%;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+// --------------------------------------------------------------------------------------------------------------
+// -Team-
+// --------------------------------------------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+.team {
+    min-height: 725px;
+    background-color: $bg-light;
+    margin-top: -2px;
+
+
+
+    &__title {
+        font-family: HelveticaNeueLTPro-Lt;
+        font-size: 34px;
+        line-height: 1.2;
+        letter-spacing: 0.68px;
+        color: $title-color;
+        text-align: center;
+        margin-top: 75px;
+    }
+
+    &__description {
+        font-family: Merriweather;
+        font-size: 16px;
+        font-weight: 300;
+        line-height: 1.63;
+        letter-spacing: 0.32px;
+        text-align: center;
+        color: #898888;
+    }
+
+
+
+    &__members {
+        // ...
+
+        &_item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 121px;
+
+            &_title {
+                font-family: HelveticaNeueLTPro-Roman;
+                font-size: 24px;
+                line-height: 1.08;
+                letter-spacing: 0.48px;
+                color: #464646;
+                margin-top: 23px;
+            }
+            &_description {
+                font-family: HelveticaNeueLTPro-Roman;
+                font-size: 13px;
+                letter-spacing: 0.26px;
+                color: #b3b3b3;
+            }
+
+            &-down {
+                margin-top: 211px;
+            }
+        }
+    }
+}
+
+
+
+//Breakpoints
+
+// xxl
+@media (min-width: 1401px) {
+
+}
+
+// xl
+@media (max-width: 1400px) {
+
+}
+
+// lg
+@media (max-width: 1200px) {
+
+}
+
+// md
+@media (max-width: 992px) {
+
+}
+
+// sm
+@media (max-width: 768px) {
+    .team {
+        min-height: 1170px;
+
+
+
+        &__members {
+            // ...
+    
+            &_item {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                margin-top: 70px;
+    
+                &-down {
+                    margin-top: 70px;
+                }
+            }
+        }
+    }
+}
+
+// none
+@media (max-width: 576px) {
+}
+
+@media (max-width: 380px) {
+
+}
+
+
+
+
+
+
+
+
+
+
+// --------------------------------------------------------------------------------------------------------------
+// -Services-
+// --------------------------------------------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+.services {
+    min-height: 1665px;
+    background-color: $bg-light;
+    background-image: url(../img/Services-Background.png);
+    background-repeat: no-repeat;
+
+
+
+    &__title {
+        font-family: HelveticaNeueLTPro-Lt;
+        font-size: 34px;
+        line-height: 1;
+        letter-spacing: 0.68px;
+        color: white;
+        text-align: center;
+        margin-top: 240px;
+    }
+    &__description {
+        font-family: Merriweather;
+        font-size: 16px;
+        font-weight: 300;
+        font-style: italic;
+        line-height: 1.63;
+        letter-spacing: 0.32px;
+        text-align: center;
+        color: #777777;
+        margin-top: 2px;
+    }
+
+
+
+    &__about {
+        margin-top: 95px;
+
+        &_item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 100px;
+            
+
+            &_title {
+                font-family: HelveticaNeueLTPro-Lt;
+                font-size: 26px;
+                line-height: 1;
+                letter-spacing: 0.52px;
+                text-align: center;
+                color: white;
+                margin-top: 25px;
+            }
+            &_description{
+                font-family: HelveticaNeueLTPro-Lt;
+                font-size: 18px;
+                line-height: 1.28;
+                letter-spacing: 0.36px;
+                text-align: center;
+                color: #383838;
+                margin-top: 10px;
+            }
+        }
+    }
+
+
+
+    &__blog {
+        min-height: 600px;
+        background-image: url(../img/Post5.png);
+        background-repeat: no-repeat;
+        background-position:50%;
+        margin-top: 172px;
+        display: flex;
+        justify-content: center;
+
+        &_button {
+            width: 217px;
+            height: 64px;
+            border: solid 1px $bg-dark;
+            background-color: $bg-light;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 304px;
+            font-family: HelveticaNeueLTPro-Roman;
+            font-size: 16px;
+            -webkit-transition-duration: 0.4s;
+            transition-duration: 0.4s;
+    
+            &:hover {
+                border: solid 1px $bg-light;
+                background-color: $bg-dark;
+                color: $bg-light;
+            }
+    
+            p {
+                margin-bottom: 0px;
+            }
+        }
+    }
+}
+
+
+
+//Breakpoints
+
+// xxl
+@media (min-width: 1401px) {
+
+}
+
+// xl
+@media (max-width: 1400px) {
+
+}
+
+// lg
+@media (max-width: 1200px) {
+
+}
+
+// md
+@media (max-width: 992px) {
+    .services {
+        min-height: 1200px;
+        background-color: $bg-dark;
+        background-image: none;
+
+        &__title {
+            margin-top: 120px;
+        }
+
+        &__blog {
+            min-height: 370px;
+            background-image: url(../img/Post5.png);
+            background-repeat: no-repeat;
+            background-position:50%;
+            margin-top: 20px;
+            display: flex;
+            justify-content: center;
+        }
+    }
+}
+
+// sm
+@media (max-width: 768px) {
+    .services {
+        min-height: 1200px;
+        background-color: $bg-dark;
+        background-image: none;
+
+        &__title {
+            margin-top: 120px;
+        }
+
+        &__blog {
+            min-height: 240px;
+            background-image: none;
+            display: flex;
+            justify-content: center;
+
+            &_button {
+                margin-top: 90px;
+            }
+        }
+
+        &__about {
+            margin-top: 85px;
+    
+            &_item {
+                margin-top: 70px;
+                
+                &_title {
+                    margin-top: 25px;
+                }
+            }
+        }
+    }
+}
+
+// none
+@media (max-width: 576px) {
+    
+}
+
+@media (max-width: 380px) {
+
+}
+
+
+
+
+
+
+
+
+
+
+// --------------------------------------------------------------------------------------------------------------
+// -Contact-
+// --------------------------------------------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+.contact {
+    min-height: 1112px;
+    background-color: $bg-light;
+
+
+
+    &__title {
+        font-family: HelveticaNeueLTPro-Lt;
+        font-size: 34px;
+        line-height: 1;
+        letter-spacing: 0.68px;
+        text-align: center;
+        color: $title-color;
+        margin-top: 89px;
+    }
+    &__description{
+        font-family: Merriweather;
+        font-size: 16px;
+        font-weight: 300;
+        font-style: italic;
+        line-height: 1.63;
+        letter-spacing: 0.32px;
+        text-align: center;
+        color: $description-color;
+        margin-top: 4px;
+    }
+
+
+
+    &__icons {
+        display: flex;
+        justify-content: center;
+        margin-top: 57px;
+
+        &_item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+
+
+            &_description {
+                font-family: HelveticaNeueLTPro-Lt;
+                font-size: 12px;
+                color: $description-color;
+                letter-spacing: 0.24px;
+                text-align: center;
+                margin-top: 8px;
+            }
+
+
+            &-phone {
+                position: relative;
+                left: -13%;
+            }
+            &-location {
+                position: relative;
+                left: 24px;
+            }
+            &-mail {
+                position: relative;
+                left: 20%;
+            }
+        }
+    }
+
+
+
+    &__name {
+        min-height: 50px;
+        border: solid 1px #999999;
+        margin-top: 148px;
+        
+        input {
+            width: 100%;
+            min-height: 50px;
+            text-align: center;
+        }
+    }
+    &__email {
+        min-height: 50px;
+        border: solid 1px #999999;
+        margin-top: 20px;
+        
+        input {
+            width: 100%;
+            min-height: 50px;
+            text-align: center;
+        }
+    }
+    &__number {
+        min-height: 50px;
+        border: solid 1px #999999;
+        margin-top: 20px;
+        
+        input {
+            width: 100%;
+            min-height: 50px;
+            text-align: center;
+        }
+    }
+    &__message {
+        min-height: 195px;
+        border: solid 1px #999999;
+        margin-top: 18px;
+
+        input {
+            width: 100%;
+            min-height: 193px;
+            padding-left: 22px;
+            padding-bottom: 136px;
+            align-content: flex-start;
+        }
+    }
+
+    &__button {
+        width: 100%;
+        height: 52px;
+        border: solid 1px $bg-dark;
+        background-color: $bg-dark;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-top: 20px;
+        font-family: HelveticaNeueLTPro-Roman;
+        color: $bg-light;
+        font-size: 16px;
+        -webkit-transition-duration: 0.4s;
+        transition-duration: 0.4s;
+
+        &:hover {
+            background-color: $bg-light;
+            color: $bg-dark;
+        }
+
+        p {
+            margin-bottom: 0px;
+        }
+    }
+}
+
+
+
+//Breakpoints
+
+// xxl
+@media (min-width: 1401px) {
+
+}
+
+// xl
+@media (max-width: 1400px) {
+
+}
+
+// lg
+@media (max-width: 1200px) {
+
+}
+
+// md
+@media (max-width: 992px) {
+
+}
+
+// sm
+@media (max-width: 768px) {
+
+}
+
+// none
+@media (max-width: 576px) {
+    .contact__icons {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-top: 40px;
+
+
+        &_item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+
+
+            &_description {
+                font-family: HelveticaNeueLTPro-Lt;
+                font-size: 12px;
+                color: $description-color;
+                letter-spacing: 0.24px;
+                text-align: center;
+                margin-top: 2px;
+            }
+
+
+            &-phone {
+                position: static;
+                margin-top: 15px;
+            }
+            &-location {
+                position: static;
+                margin-top: 15px;
+            }
+            &-mail {
+                position: static;
+                margin-top: 15px;
+            }
+        }
+    }
+}
+
+@media (max-width: 380px) {
+
+}
